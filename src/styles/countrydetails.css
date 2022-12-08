@@ -1,3 +1,6 @@
+* {
+  background-size: cover;
+}
 .infoSectionDark>a>button, .infoSectionLight>a>button {
   display: flex;
   align-items: center;
@@ -17,6 +20,7 @@
 .borderButtons {
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
 }
 .borderButtons>a>button {
   width: 5rem;

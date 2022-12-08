@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './styles/countrycard.css';
-import { useState } from 'react';
 import './styles/countrycard.css';
 import { Link } from 'react-router-dom';
 

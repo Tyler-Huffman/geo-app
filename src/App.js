@@ -40,7 +40,12 @@ export default function App() {
             <CountryDetails countriesData={countriesData} darkMode={darkMode} />
           }
         ></Route>
-        <Route path='/flag-game' element={<FlagGame />}></Route>
+        <Route
+          path='/flag-game'
+          element={
+            <FlagGame countriesData={countriesData} darkMode={darkMode} />
+          }
+        ></Route>
       </Routes>
     </>
   );

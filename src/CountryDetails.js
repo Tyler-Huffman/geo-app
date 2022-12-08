@@ -33,15 +33,15 @@ export default function CountryDetails(props) {
     'borders' in selectedCountry
       ? borders.map((borderCountry) => {
           return (
-            <Link to={`/${threeKeyLookupMap.get(borderCountry)}`}>
+            <Link key={borderCountry} to={`/${threeKeyLookupMap.get(borderCountry)}`}>
               <button className='borderButton'>{threeKeyLookupMap.get(borderCountry)}</button>
             </Link>
           );
         })
-      : '';
+      : `${name} has no borders`;
 
   const languageNameList = languages.map((lang) => {
-    return <span>"{lang.name}" </span>;
+    return <span key={lang.name}>"{lang.name}" </span>;
   });
 
   return (
