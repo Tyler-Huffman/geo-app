@@ -2,22 +2,21 @@ import React from 'react';
 import './styles/filterform.css';
 
 export default function FilterForm(props) {
-  const { handleTextChange, userInputData, darkMode, handleRegionSelection } =
-    props;
+  const { handleFilterFormChange, userInputData, darkMode } = props;
 
   return (
     <form className={darkMode ? 'inputsDark' : 'inputsLight'}>
       <input
         type='text'
         placeholder='Search for a country...'
-        onChange={handleTextChange}
+        onChange={handleFilterFormChange}
         value={userInputData.search}
         name='search'
       />
       <label htmlFor='regionSelection'></label>
       <select
         id='regionSelection'
-        onChange={handleRegionSelection}
+        onChange={handleFilterFormChange}
         name='regionSelection'
       >
         <option value='none'>Filter by region</option>

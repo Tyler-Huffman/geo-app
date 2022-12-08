@@ -9,20 +9,12 @@ export default function Home({ countriesData, darkMode }) {
     regionSelection: 'none',
   });
 
-  function handleTextChange(e) {
+  function handleFilterFormChange(e) {
+    const { name, value } = e.target;
     setUserInputData((prevState) => {
       return {
         ...prevState,
-        search: e.target.value,
-      };
-    });
-  }
-
-  function handleRegionSelection(e) {
-    setUserInputData((prevState) => {
-      return {
-        ...prevState,
-        regionSelection: e.target.value,
+        [name]: value,
       };
     });
   }
@@ -53,8 +45,7 @@ export default function Home({ countriesData, darkMode }) {
       <FilterForm
         userInputData={userInputData}
         darkMode={darkMode}
-        handleRegionSelection={handleRegionSelection}
-        handleTextChange={handleTextChange}
+        handleFilterFormChange={handleFilterFormChange}
       />
       <div className={darkMode ? 'countryGridDark' : 'countryGridLight'}>
         {countries}

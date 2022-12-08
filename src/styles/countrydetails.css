@@ -1,4 +1,3 @@
-
 .infoSectionDark>a>button, .infoSectionLight>a>button {
   display: flex;
   align-items: center;
@@ -11,18 +10,20 @@
   width: 5rem;
 }
 
-#arrow-img {
-  margin: auto;
+.borderButton {
+  width: 5rem;
 }
 
-@media (max-width: 800px) {
-  .info {
-    flex-direction: column;
-    align-items: center;
-  }
-  .gridExpandTwo {
-    text-align: center;
-  }
+.borderButtons {
+  display: flex;
+  justify-content: center;
+}
+.borderButtons>a>button {
+  width: 5rem;
+}
+
+#arrow-img {
+  margin: auto;
 }
 
 .infoSectionDark>button {
@@ -51,9 +52,9 @@
   margin: 2rem;
 }
 
-.info>img {
-  height: 15rem;
-  width: 25rem;
+#infoImage {
+  height: 20rem;
+  width: 40rem;
 }
 
 .infoText {
@@ -70,34 +71,4 @@
   font-size: 1.25rem;
   grid-column: span 2;
   margin-left: 1rem;
-}
-
-.borderButtons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-left: -3rem;
-} 
-
-.borderButton {
-  width: 10rem;
-  flex-wrap: wrap;
-  height: 3rem;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 10%;
-  background-color: hsl(209, 23%, 22%);
-  padding: 0.75rem;
-  border: none;
-}
-
-@media (min-width: 800px) {
-  .borderButtons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .borderButton {
-    text-align: center;
-  }
 }

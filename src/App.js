@@ -13,7 +13,7 @@ export default function App() {
   const [countriesData, setCountriesData] = useState([]);
 
   const API_URL = 'https://restcountries.com/v2/all';
-  const { isLoading, error, data } = useQuery('countryData', async () => {
+  const { isLoading, data } = useQuery('countryData', async () => {
     const res = await fetch(API_URL)
       .then((res) => res.json())
       .then((data) => setCountriesData(data));
@@ -23,11 +23,9 @@ export default function App() {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   }
 
-  if (isLoading) {
-    return <LoadingScreen darkMode={darkMode} />;
-  }
-
-  return (
+  return isLoading ? (
+    <LoadingScreen darkMode={darkMode} />
+  ) : (
     <>
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 

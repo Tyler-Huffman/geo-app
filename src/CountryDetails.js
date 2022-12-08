@@ -1,13 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import './styles/countrydetails.css';
-import { Link } from 'react-router-dom';
 
 export default function CountryDetails(props) {
   const { countryName } = useParams();
   const { countriesData, darkMode } = props;
-  const selectedCountry = countriesData.find(
-    (country) => country.name === countryName
-  );
+  const selectedCountry = countriesData.find((el) => el.name === countryName);
   const {
     region,
     currencies,
@@ -36,11 +33,9 @@ export default function CountryDetails(props) {
     'borders' in selectedCountry
       ? borders.map((borderCountry) => {
           return (
-            <button>
-              <Link to={`/${threeKeyLookupMap.get(borderCountry)}`}>
-                {threeKeyLookupMap.get(borderCountry)}
-              </Link>
-            </button>
+            <Link to={`/${threeKeyLookupMap.get(borderCountry)}`}>
+              <button className='borderButton'>{threeKeyLookupMap.get(borderCountry)}</button>
+            </Link>
           );
         })
       : '';
@@ -58,7 +53,9 @@ export default function CountryDetails(props) {
           </button>
         </Link>
         <div className='info'>
-          <img className='infoImage' src={flag} alt='' />
+          <div>
+            <img id='infoImage' src={flag} alt='' />
+          </div>
           <div className='infoText'>
             <h3 className='gridExpandTwo'>{name}</h3>
             <p>Native Name: {nativeName}</p>
@@ -71,8 +68,10 @@ export default function CountryDetails(props) {
               <p>Currencies: {currencies[0].name}</p>
             )}
             <p>Languages: {languageNameList}</p>
-            <p className='gridExpandTwo'>Border Countries:</p>
           </div>
+        </div>
+        <div id='borderSection'>
+          Border Countries:
           <div className='borderButtons'>{borderCountryButtons}</div>
         </div>
       </div>
