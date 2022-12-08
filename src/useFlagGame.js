@@ -1,13 +1,31 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-function useFlagGame(countriesData) {
+export default function useFlagGame(countriesData) {
   const [randomCountry, setRandomCountry] = useState(
     countriesData[Math.trunc(Math.random() * countriesData.length)]
   );
-  let score = 0;
-  let roundResult = '';
-  const correctAnswer = randomCountry.name;
+  const [score, setScore] = useState(0);
+  const [gameActive, setGameActive] = useState(false);
+  const [result, setResult] = useState('');
+  const correctAnswer = randomCountry.name.toLowerCase();
   const inputRef = useRef(null);
+
+  function startGame() {
+    setResult('');
+    setGameActive(true);
+    setNewRandomCountry(
+      countriesData[Math.trunc(Math.random() * countriesData.length)]
+    );
+    inputRef.current.disabled = false;
+    inputRef.current.focus();
+  }
+
+  function endGame() {
+    setGameActive(false);
+    setScore(0);
+    inputRef.current.value = '';
+    setResult(`That was incorrect. The answer was ${correctAnswer}`);
+  }
 
   function setNewRandomCountry() {
     setRandomCountry((prevRandom) => {
@@ -20,18 +38,24 @@ function useFlagGame(countriesData) {
   }
 
   function handleAnswerSubmit() {
-    const isAnswerCorrect = correctAnswer === inputRef.current.value;
+    const userAnswer = inputRef.current.value.toLowerCase();
+    const isAnswerCorrect = correctAnswer === userAnswer;
     if (isAnswerCorrect) {
-      roundResult += 'You got that correct!';
-      score += 1;
-    } else
-      roundResult += `You got that incorrect. The correct answer was ${randomCountry.name}`;
-    console.log('isAnswerCorrect', isAnswerCorrect);
-    console.log(correctAnswer);
-    setNewRandomCountry();
+      setScore((prev) => prev + 1);
+      setNewRandomCountry();
+      inputRef.current.value = '';
+      inputRef.current.focus();
+      setResult('Correct!');
+    } else endGame();
   }
 
-  return { randomCountry, score, roundResult, inputRef, handleAnswerSubmit };
+  return {
+    randomCountry,
+    score,
+    gameActive,
+    inputRef,
+    handleAnswerSubmit,
+    startGame,
+    result,
+  };
 }
-
-export default useFlagGame;

@@ -3,13 +3,27 @@ import './styles/flaggame.css';
 import useFlagGame from './useFlagGame';
 
 export default function FlagGame({ darkMode, countriesData }) {
-  const { randomCountry, score, roundResult, inputRef, handleAnswerSubmit } =
-    useFlagGame(countriesData);
+  const {
+    randomCountry,
+    score,
+    inputRef,
+    handleAnswerSubmit,
+    gameActive,
+    startGame,
+    result,
+  } = useFlagGame(countriesData);
 
   return (
     <div className={darkMode ? 'flagGameDark' : 'flagGameLight'}>
       <div id='flagGameContainer'>
-        <h1>Enter the country the flag belongs to</h1>
+        <h1>Guess the Flag</h1>
+        <p>Guess as many flags in a row as you can.</p>
+        <p>Click the button below to start!</p>
+        <button disabled={gameActive} onClick={startGame}>
+          Start Game
+        </button>
+        <h2>Player Score: {score}</h2>
+        {result && <h4>{result}</h4>}
         <img
           unoptimized='true'
           src={randomCountry.flag}
@@ -24,17 +38,17 @@ export default function FlagGame({ darkMode, countriesData }) {
             type='text'
             placeholder='Enter your answer...'
             ref={inputRef}
+            disabled={!gameActive}
           />
           <button
             type='submit'
             onClick={handleAnswerSubmit}
             id='submitAnswerButton'
+            disabled={!gameActive}
           >
             Submit
           </button>
         </div>
-        Player Score: {score}
-        {roundResult && <h1>{roundResult}</h1>}
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ export default function NavBar({ darkMode, toggleDarkMode }) {
         </Link>
         <div className='navbarRight'>
           <Link to='./flag-game' id='flag-game-link'>
-            Flag Game
+            Play Flag Game
           </Link>
           <img
             onClick={toggleDarkMode}

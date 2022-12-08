@@ -4,7 +4,11 @@
   align-items: center;
   justify-content: space-around;
   min-height: fit-content;
-  gap: 1rem;
+  gap: 0.8rem;
+}
+
+#flagGameContainer > p, #flagGameContainer > h4 {
+  margin-top: -1rem;
 }
 
 .flagGameDark {
@@ -24,12 +28,12 @@
 #answerInput {
   font-size: larger;
   width: 15rem;
-  height: 3rem;
+  height: 2rem;
   margin-right: 3rem;
   padding: .5rem;
 }
-#submitAnswerButton {
-  padding: 1rem;
+#flagGameContainer > button, #submitAnswerButton {
+  padding: .75rem;
 }
 
 
