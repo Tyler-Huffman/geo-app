@@ -1,0 +1,20 @@
+.loadingScreenDark, .loadingScreenLight {
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.loadingScreenDark>p, .loadingScreenLight>p {
+  margin: auto;
+}
+
+.loadingScreenDark {
+  background-color: rgb(32, 44, 55);
+  color: rgb(255, 255, 255);
+}
+
+.loadingScreenLight {
+  background-color: hwb(0 98% 4%);
+  color: hsl(200, 15%, 8%);
+}

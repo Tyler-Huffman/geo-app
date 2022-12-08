@@ -1,0 +1,15 @@
+.inputsDark {
+  background-color: hsl(207, 26%, 17%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputsLight {
+  background-color: hwb(0 98% 4%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputsDark>input,  .inputsDark>select, .inputsLight>input,  .inputsLight>select {
+  margin: auto 1rem 1rem 1rem;
+}

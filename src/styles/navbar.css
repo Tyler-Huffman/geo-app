@@ -1,0 +1,36 @@
+.navbarDark {
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(32, 44, 55);
+  padding: 1rem;
+}
+
+.navbarLight {
+  color: hsl(200, 15%, 8%);
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(245, 245, 245);
+  padding: 1rem;
+}
+
+#home-link {
+  text-decoration: none;
+  color: white;
+}
+
+.navbarRight {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+}
+
+#flag-game-link {
+  margin-right: 2.5rem;
+
+}
+
+.title {
+  font-size: 1.5rem;
+}
