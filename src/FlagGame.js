@@ -10,7 +10,7 @@ export default function FlagGame({ darkMode, countriesData }) {
     handleAnswerSubmit,
     gameActive,
     startGame,
-    result,
+    resultRef,
   } = useFlagGame(countriesData);
 
   return (
@@ -23,7 +23,7 @@ export default function FlagGame({ darkMode, countriesData }) {
           Start Game
         </button>
         <h2>Player Score: {score}</h2>
-        {result && <h4>{result}</h4>}
+        <h4 ref={resultRef}></h4>
         <img
           unoptimized='true'
           src={randomCountry.flag}

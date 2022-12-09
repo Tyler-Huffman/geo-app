@@ -33,12 +33,16 @@ export default function CountryDetails(props) {
     'borders' in selectedCountry
       ? borders.map((borderCountry) => {
           return (
-            <Link key={borderCountry} to={`/${threeKeyLookupMap.get(borderCountry)}`}>
-              <button className='borderButton'>{threeKeyLookupMap.get(borderCountry)}</button>
+            <Link
+              className='borderButtons'
+              key={borderCountry}
+              to={`/${threeKeyLookupMap.get(borderCountry)}`}
+            >
+              {threeKeyLookupMap.get(borderCountry)}
             </Link>
           );
         })
-      : `${name} has no borders`;
+      : `${name} has no bordering countries`;
 
   const languageNameList = languages.map((lang) => {
     return <span key={lang.name}>"{lang.name}" </span>;
@@ -70,10 +74,10 @@ export default function CountryDetails(props) {
             <p>Languages: {languageNameList}</p>
           </div>
         </div>
-        <div id='borderSection'>
+        <div style={{ textAlign: 'center', fontSize: 'larger' }}>
           Border Countries:
-          <div className='borderButtons'>{borderCountryButtons}</div>
         </div>
+        <div className='borderButtonsDisplay'>{borderCountryButtons}</div>
       </div>
     </>
   );

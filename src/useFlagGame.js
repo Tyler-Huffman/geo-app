@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 export default function useFlagGame(countriesData) {
   const [randomCountry, setRandomCountry] = useState(
@@ -6,12 +6,12 @@ export default function useFlagGame(countriesData) {
   );
   const [score, setScore] = useState(0);
   const [gameActive, setGameActive] = useState(false);
-  const [result, setResult] = useState('');
-  const correctAnswer = randomCountry.name.toLowerCase();
+  const resultRef = useRef(null);
   const inputRef = useRef(null);
+  const correctAnswer = randomCountry.name.toLowerCase();
 
   function startGame() {
-    setResult('');
+    resultRef.current.textContent = '';
     setGameActive(true);
     setNewRandomCountry(
       countriesData[Math.trunc(Math.random() * countriesData.length)]
@@ -24,7 +24,7 @@ export default function useFlagGame(countriesData) {
     setGameActive(false);
     setScore(0);
     inputRef.current.value = '';
-    setResult(`That was incorrect. The answer was ${correctAnswer}`);
+    resultRef.current.textContent = `That was incorrect. The answer was ${correctAnswer}`;
   }
 
   function setNewRandomCountry() {
@@ -39,13 +39,12 @@ export default function useFlagGame(countriesData) {
 
   function handleAnswerSubmit() {
     const userAnswer = inputRef.current.value.toLowerCase();
-    const isAnswerCorrect = correctAnswer === userAnswer;
-    if (isAnswerCorrect) {
+    if (correctAnswer === userAnswer) {
       setScore((prev) => prev + 1);
       setNewRandomCountry();
       inputRef.current.value = '';
       inputRef.current.focus();
-      setResult('Correct!');
+      resultRef.current.textContent = 'Correct!';
     } else endGame();
   }
 
@@ -56,6 +55,6 @@ export default function useFlagGame(countriesData) {
     inputRef,
     handleAnswerSubmit,
     startGame,
-    result,
+    resultRef,
   };
 }

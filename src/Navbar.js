@@ -9,7 +9,11 @@ export default function NavBar({ darkMode, toggleDarkMode }) {
           <h1 className='title'>Where in the World?</h1>
         </Link>
         <div className='navbarRight'>
-          <Link to='./flag-game' id='flag-game-link'>
+          <Link
+            to='./flag-game'
+            id='flag-game-link'
+            style={darkMode ? { color: 'white' } : { color: 'black' }}
+          >
             Play Flag Game
           </Link>
           <img

@@ -13,14 +13,22 @@
   width: 5rem;
 }
 
-.borderButton {
-  width: 5rem;
+.borderButtons {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5%;
+  padding: 1rem 0.25rem 1rem .25rem;
 }
 
-.borderButtons {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
+.borderButtonsDisplay {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  gap: 1rem;
+  margin-top: .5rem;
 }
 .borderButtons>a>button {
   width: 5rem;

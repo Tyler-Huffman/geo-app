@@ -17,7 +17,7 @@ export default function CountryCard(props) {
           width={250}
           height={150}
         />
-        <div className={styles.countryCardText}>
+        <div className='countryCardText'>
           <p>{name}</p>
           <p>Population: {population.toLocaleString('en-US')}</p>
           <p>Region: {region}</p>
